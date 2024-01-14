@@ -1,0 +1,158 @@
+/* Modal */
+/* A mettre en place avec JS */
+
+.data-error {
+  font-size: 10px;
+  color: var(--first-color);
+}
+
+.modal header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  /* font-size: 64px; */
+}
+.contact h2 {
+  font-weight: normal;
+  margin: 0;
+  font-size: 34px;
+}
+.contact h3 {
+  font-weight: normal;
+  margin: 10px 0;
+  font-size: 28px;
+}
+header button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+
+  /* align-self: top; */
+}
+button .formModal_close {
+  height: 30px;
+  width: 30px;
+  z-index: 10;
+}
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.form-data {
+  margin-top: 10px;
+  /* position: relative; */
+}
+label {
+  display: block;
+  font-size: 22px;
+  position: relative;
+  color: var(--grey);
+  padding: 15px 0 5px 0;
+}
+input {
+  display: block;
+  width: 95%;
+  font-size: 20px;
+  padding: 7px 10px;
+  border-radius: 5px;
+  border: none;
+  color: var(--grey);
+}
+input::placeholder {
+  font-size: 16px;
+  color: rgb(185, 185, 185);
+}
+.icon-input-verif {
+  position: relative;
+}
+.check-icon {
+  width: 20px;
+  position: absolute;
+  top: 6px;
+  right: 0;
+  /* transform: translateY(-50%); */
+  display: none;
+}
+.error-msg {
+  margin-top: 7px;
+  color: #7e1212;
+  font-weight: 400;
+  display: none;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 150px;
+  border-radius: 5px;
+  border: none;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  /* margin-bottom: 10px; */
+}
+.modal_form {
+  /* visibility: hidden; */
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #333333d3;
+  z-index: 1;
+  /* transition: visibility 0.4s; */
+}
+.modal_form.active {
+  display: block;
+  /* visibility: visible;
+  pointer-events: none; */
+}
+
+.modal {
+  /* display: none; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--tertiary-color);
+  max-width: 660px;
+  min-width: 300px;
+  padding: 35px;
+  border-radius: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% - 50px));
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+.modal_form.active .modal {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.4s 0.2s ease-out, transform 0.4s 0.2s ease-out;
+  z-index: 5;
+}
+/* .contact_button:hover,
+.submit_button:hover {
+  background: #791818;
+}
+.submit_button.shake {
+  animation: shake 0.4s;
+}
+@keyframes shake {
+  33% {
+    transform: translateX(-5px);
+  }
+  66% {
+    transform: translateX(+5px);
+  }
+} */

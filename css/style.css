@@ -1,0 +1,133 @@
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  /* Colors */
+  --white: white;
+  --black: black;
+  --grey: #312e2e;
+  --first-color: #901c1c;
+  --scd-color: #fafafa;
+  --tertiary-color: #d3573c;
+
+  /* Font-size */
+  --fs-12: 0.75rem;
+  --fs-14: 0.875rem;
+  --fs-16: 1rem;
+  --fs-18: 1.125rem;
+  --fs-20: 1.25rem;
+  --fs-22: 1.375rem;
+  --fs-24: 1.5rem;
+  --fs-26: 1.625rem;
+  --fs-36: 2.25rem;
+  --fs-40: 2.5rem;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+}
+
+header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 90px;
+  margin: 20px;
+}
+header > * {
+  display: flex;
+  align-items: center;
+}
+h1 {
+  justify-content: right;
+  color: var(--first-color);
+  font-size: var(--fs-36);
+  margin-right: 20px;
+}
+.container_logo {
+  justify-content: left;
+  margin-left: 20px;
+  .logo {
+    height: 50px;
+  }
+}
+
+.photographers_section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+  margin: 100px 20px 100px 20px;
+}
+
+.photographers_section article {
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+article a {
+  text-decoration: none;
+}
+.card_link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.photographers_section .card_link h2 {
+  color: var(--tertiary-color);
+  font-size: var(--fs-36);
+  text-align: center;
+  margin: 0;
+}
+
+.photographers_section .card_link h2:hover {
+  color: var(--first-color);
+  transform: scale(1.05);
+}
+
+.photographers_section .card_link img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  object-position: center;
+  object-fit: cover;
+  box-shadow: 2px 2px 5px var(--grey);
+}
+.photographers_section article h3 {
+  color: var(--first-color);
+  font-size: var(--fs-20);
+  margin: 0;
+  padding: 3px;
+}
+.photographers_section article p {
+  color: var(--black);
+  font-size: var(--fs-16);
+  margin: 0;
+  padding: 2px;
+}
+.photographers_section article span {
+  color: #757575;
+  font-size: var(--fs-14);
+  padding-top: 2px;
+}
+
+@media (max-width= 768px) {
+  .photographers_section {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin: 80px 20px 80px 20px;
+  }
+}
+@media (max-width= 320px) {
+  .photographers_section {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin: 70px 20px 70px 20px;
+  }
+}

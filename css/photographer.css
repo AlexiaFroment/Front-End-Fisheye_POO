@@ -5,6 +5,21 @@
   --first-color: #901c1c;
   --scd-color: #fafafa;
   --tertiary-color: #db8876;
+
+  /* Font-size */
+  --fs-12: 0.75rem;
+  --fs-14: 0.875rem;
+  --fs-16: 1rem;
+  --fs-18: 1.125rem;
+  --fs-20: 1.25rem;
+  --fs-22: 1.375rem;
+  --fs-24: 1.5rem;
+  --fs-26: 1.625rem;
+  --fs-30: 1.875rem;
+  --fs-36: 2.25rem;
+  --fs-40: 2.5rem;
+  --fs-50: 3.125rem;
+  --fs-64: 4rem;
 }
 
 .no-scroll {
@@ -28,25 +43,24 @@ header img.logo {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
 }
 .photograph_infos {
   order: 1;
   h2 {
-    font-size: 64px;
+    font-size: var(--fs-64);
     color: var(--tertiary-color);
     margin: 0;
     text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
   }
   h3 {
-    font-size: 36px;
+    font-size: var(--fs-36);
     font-weight: 900;
     color: var(--first-color);
     text-shadow: 3px 1px 4px rgba(0, 0, 0, 0.25);
     margin: 20px 0;
   }
   p {
-    font-size: 30px;
+    font-size: var(--fs-30);
     color: #525252;
     margin: 0;
   }
@@ -58,7 +72,7 @@ header img.logo {
 }
 .contact_btn,
 .submit_button {
-  font-size: 20px;
+  font-size: var(--fs-20);
   font-weight: bold;
   color: var(--white);
   margin: 15px 0;
@@ -108,7 +122,7 @@ header img.logo {
   margin: 40px;
 }
 span.filter_by {
-  font-size: 24px;
+  font-size: var(--fs-24);
   font-weight: bold;
   padding: 7px 10px;
   margin-right: 20px;
@@ -145,7 +159,7 @@ span.filter_by {
   background: var(--first-color);
   border-radius: 5px;
   color: var(--white);
-  font-size: 20px;
+  font-size: var(--fs-20);
   font-weight: bold;
   font-family: open;
   cursor: pointer;
@@ -159,6 +173,12 @@ button.bloc_top .icon {
   display: flex;
   flex-direction: column;
 }
+#date {
+  cursor: pointer;
+}
+#title {
+  cursor: pointer;
+}
 hr.separator {
   width: 90%;
   background: white;
@@ -166,7 +186,7 @@ hr.separator {
 }
 .bloc_filter span {
   padding: 15px 20px;
-  font-size: 20px;
+  font-size: var(--fs-20);
   font-weight: bold;
 }
 .bloc_filter span:last-child {
@@ -208,11 +228,11 @@ article.card {
   justify-content: space-between;
 }
 .title_photo {
-  font-size: 24px;
+  font-size: var(--fs-24);
   color: var(--first-color);
 }
 .likes_photo {
-  font-size: 24px;
+  font-size: var(--fs-24);
   color: var(--first-color);
   cursor: pointer;
   .like {
@@ -233,8 +253,9 @@ article.card {
   height: 50px;
   background: var(--tertiary-color);
   border-radius: 5px 5px 0 0;
-  font-size: 20px;
+  font-size: var(--fs-20);
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
@@ -242,14 +263,38 @@ article.card {
   padding: 0 15px;
 }
 
-@media (max-width= 768px) {
+@media screen and (max-width: 768px) {
+  .about_photographer {
+    padding: 40px 30px;
+  }
+
+  .photograph_infos {
+    h2 {
+      font-size: var(--fs-50);
+    }
+    h3 {
+      font-size: var(--fs-30);
+      margin: 15px 0;
+    }
+    p {
+      font-size: var(--fs-26);
+    }
+  }
+
+  .contact_btn,
+  .submit_button {
+    font-size: var(--fs-18);
+    margin: 10px 0;
+    width: 160px;
+  }
   .photographers_section {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     margin: 80px 20px 80px 20px;
   }
 }
-@media (max-width= 320px) {
+
+@media (max-width: 320px) {
   .photographers_section {
     grid-template-columns: 1fr;
     gap: 40px;

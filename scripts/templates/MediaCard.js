@@ -1,43 +1,35 @@
 class MediaCard {
-  constructor(media, LikesSubject) {
+  constructor(media) {
     this._media = media;
-    // console.log(this);
-    this.LikesSubject = LikesSubject;
+  }
 
-    this.countLike = this._media.likes;
+  updateBoxLikes() {
+    this.$boxLikes = document.querySelector(".likes_count");
+    this.$boxLikes.innerHTML = "";
+    const templateLikes = new MediaLikes(this._media);
+    this.$boxLikes.appendChild(templateLikes.getLikes());
   }
 
   countLikeBox() {
     const that = this;
-    // ❌ INC or DEC likes
+    this.$likesPhoto = this.$wrapper.querySelector(".likes_photo");
+    this.$likesSpan = this.$wrapper.querySelector(".countLike");
 
-    this.$wrapper
-      .querySelector(".likes_photo")
-      .addEventListener("click", function () {
-        // console.log("countLike", this.countLike);
-        // console.log("clic");
-        if (this.classList.contains("active")) {
-          this.classList.remove("active");
-          console.log(this.countLike);
-          this.countLike -= 1;
-          // console.log(this.countLike);
-          that.LikesSubject.fire("DEC");
-        } else {
-          this.classList.add("active");
-          // console.log(this.countLike);
-          this.countLike += 1;
-          // console.log(this.countLike);
-          that.LikesSubject.fire("INC");
-        }
-      });
+    this.$likesPhoto.addEventListener("click", function () {
+      if (this.classList.contains("active")) {
+        this.classList.remove("active");
+        that.$likesSpan.innerHTML = `${that._media.likes - 1}`;
+        that._media.likes -= 1;
+        that.updateBoxLikes(that);
+      } else {
+        this.classList.add("active");
+        that.$likesSpan.innerHTML = `${that._media.likes + 1}`;
+        that._media.likes += 1;
+
+        that.updateBoxLikes(that);
+      }
+    });
   }
-
-  // openLightbox(index) {
-  //   e.preventDefault();
-  //   console.log("clickLB", index);
-  //   const lightbox = new LightboxModal(this._media);
-  //   lightbox.createLightbox(index);
-  // }
 
   createMediaCard(index) {
     this.$wrapper = document.createElement("article");
@@ -78,7 +70,6 @@ class MediaCard {
 
     this.$wrapper.querySelector(".media").addEventListener("click", (e) => {
       e.preventDefault();
-      console.log("clickLB", index);
       const lightbox = new LightboxModal(this._media);
       lightbox.createLightbox(index);
     });

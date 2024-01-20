@@ -2,9 +2,6 @@ class LightboxModal {
   constructor(media) {
     this._media = media;
 
-    // this.allMedias = document.querySelectorAll(".card");
-    // console.log(allMedias);
-
     this.$Main = document.querySelector("#main");
     this.$modalWrapperLightbox = document.querySelector(".modal_lightbox");
     this.$wrapper = document.createElement("div");
@@ -13,10 +10,9 @@ class LightboxModal {
     document.addEventListener("keyup", this.onKeyUp);
   }
 
-  /**
-   *AddEventListener to click & to keyboard
-   * @param {MouseEvent/KeyboardEvent} e
-   */
+  // deleteDOM() {
+  //   this.$modalWrapperLightbox.innerHTML = "";
+  // }
 
   onKeyUp(e) {
     if (e.key === "Escape") {
@@ -27,34 +23,29 @@ class LightboxModal {
       this.next(e);
     }
   }
-  prev(e) {
-    e.preventDefault();
-    console.log("prev", this._card, this.allMedias, this._media);
 
-    this.allMedias.map((media) => {
-      new MediasData(media);
-    });
-    const i = this.allMedias.findIndex((media) => id == media.id);
-    // const media = this.allMedias[i]
-
-    // let i = this.allMedias.findIndex((media) => {
-    //   media === this._card;
-    // });
-    console.log(i);
-    if (i === 0) {
-      i = this.allMedias.length;
-    }
-    this.createLightbox(this._media[i - 1]);
-  }
   next(e) {
     e.preventDefault();
-    console.log("next", this.allMedias, this._media);
-    let i = this.allMedias.findIndex((media) => media === this._media);
-    console.log(i);
-    if (i === this.allMedias.length - 1) {
+    let i = this.findIndex;
+    // console.log("index en cours", i);
+    if (i === this.galery.length - 1) {
       i = -1;
     }
-    this.createLightbox(this._media[i + 1]);
+    i++;
+    // console.log("index au clic next", i);
+    this.createLightbox(i);
+  }
+  prev(e) {
+    e.preventDefault();
+    // console.log("index en cours", this.findIndex);
+    let i = this.findIndex;
+    if (i === 0) {
+      i = this.galery.length;
+      // console.log(this.galery.length);
+    }
+    i--;
+    // console.log("index au clic sur prev", i);
+    this.createLightbox(i);
   }
 
   close(e) {
@@ -68,20 +59,27 @@ class LightboxModal {
   }
 
   createLightbox(index) {
-    this.allMedias = document.querySelectorAll(".card");
-    this._card = this.allMedias[index];
-    console.log(this);
+    this.allMedias = Array.from(document.querySelectorAll(`.media`));
+    this.galery = this.allMedias.filter((media) => media.id);
+    console.log("galery", this.galery);
+    this.card = this.galery[index];
+    this.findIndex = this.galery.findIndex((el) => el === this.card);
+    this.typeMedia = this.card.tagName;
+    console.log(this.typeMedia);
+    console.log(index);
+    console.log("card ", this.card);
+    console.log("media ", this._media);
 
     const img = `
     <div class="lightbox_container">
-    <img class="media" src="assets/medias/${this._media.image}" alt="${this._media.title}" id="${this._media.id}"/>
-    <h3>${this._media.title}</h3>
+    <img class="media" src="${this.card.src}" alt="${this.card.alt}" id="${this.card.id}"/>
+    <h3>${this.card.alt}</h3>
     </div>
     `;
 
     const video = `
     <div class="lightbox_container">
-    <video controls class="media" src="assets/medias/${this._media.video}" alt="${this._media.title}" id="${this._media.id}"></video>
+    <video class="media" src="${this.card.src}" alt="${this._media.title}" id="${this.card.id}" controls></video>
     <h3>${this._media.title}</h3>
     </div>
     `;
@@ -93,16 +91,16 @@ class LightboxModal {
     `;
 
     const mediaInLightbox = () => {
-      if (this._media.hasOwnProperty("image")) {
+      if (this.typeMedia === "IMG") {
         return img;
-      } else if (this._media.hasOwnProperty("video")) {
+      } else if (this.typeMedia === "VIDEO") {
         return video;
       } else {
         throw "Unknown type format";
       }
     };
 
-    this.$wrapper.innerHTML = mediaInLightbox(this._media);
+    this.$wrapper.innerHTML = mediaInLightbox(this.card);
     this.$wrapper.innerHTML += modalLightbox;
 
     this.$modalWrapperLightbox.classList.add("active");
@@ -118,6 +116,7 @@ class LightboxModal {
     this.$wrapper
       .querySelector(".lightbox_next")
       .addEventListener("click", this.next.bind(this));
+
     this.$wrapper
       .querySelector(".lightbox_prev")
       .addEventListener("click", this.prev.bind(this));

@@ -16,7 +16,7 @@ class MediasFilter {
       return a.likes - b.likes;
     });
 
-    console.log("famous", filteredByLikes);
+    // console.log("famous", filteredByLikes);
     this.deleteDOM(this);
 
     filteredByLikes.forEach((media) => {
@@ -32,7 +32,7 @@ class MediasFilter {
     const chronoOrder = this.mediaCopy.sort((a, b) => {
       return Date.parse(a.date) - Date.parse(b.date);
     });
-    console.log("date", chronoOrder);
+    // console.log("date", chronoOrder);
     this.deleteDOM(this);
 
     chronoOrder.forEach((media) => {
@@ -48,7 +48,7 @@ class MediasFilter {
     const alphaOrder = this.mediaCopy.sort((a, b) => {
       return a.title.localeCompare(b.title);
     });
-    console.log("title", alphaOrder);
+    // console.log("title", alphaOrder);
     this.deleteDOM(this);
 
     alphaOrder.forEach((media) => {
@@ -58,53 +58,6 @@ class MediasFilter {
       );
     });
   }
-
-  // sortedMedias(e) {
-  //   e.preventDefault();
-  //   const sorter = e.target.value;
-  //   console.log("changeSorter", sorter);
-
-  //   if (e.target.value === "TITLE") {
-  //     const alphaOrder = this.mediaCopy.sort((a, b) => {
-  //       return a.title.localeCompare(b.title);
-  //     });
-  //     console.log(alphaOrder);
-  //     this.deleteDOM(this);
-
-  //     alphaOrder.forEach((media) => {
-  //       const templateArticle = new MediaCard(media);
-  //       this.$wrapperMediasContainer.appendChild(
-  //         templateArticle.createMediaCard()
-  //       );
-  //     });
-  //   } else if (e.target.value === "FAMOUS") {
-  //     const filteredByLikes = this.mediaCopy.sort((a, b) => {
-  //       return a.likes - b.likes;
-  //     });
-  //     console.log(filteredByLikes);
-  //     this.deleteDOM(this);
-
-  //     filteredByLikes.forEach((media) => {
-  //       const templateArticle = new MediaCard(media);
-  //       this.$wrapperMediasContainer.appendChild(
-  //         templateArticle.createMediaCard()
-  //       );
-  //     });
-  //   } else if (e.target.value === "DATE") {
-  //     const chronoOrder = this.mediaCopy.sort((a, b) => {
-  //       return Date.parse(a.date) - Date.parse(b.date);
-  //     });
-  //     console.log(chronoOrder);
-  //     this.deleteDOM(this);
-
-  //     chronoOrder.forEach((media) => {
-  //       const templateArticle = new MediaCard(media);
-  //       this.$wrapperMediasContainer.appendChild(
-  //         templateArticle.createMediaCard()
-  //       );
-  //     });
-  //   }
-  // }
 
   createFilterMedia() {
     this.$wrapper = document.createElement("div");
@@ -128,13 +81,11 @@ class MediasFilter {
     this.$wrapper.innerHTML = filterMedias;
 
     this.icon = document.querySelector("#icon");
-    console.log(this.icon);
 
     let toggleIndex = 0;
 
     this.$wrapper.querySelector(".bloc_top").addEventListener("click", () => {
       if (toggleIndex === 0) {
-        console.log("ouvert");
         this.$wrapper.style.height = "210px";
         icon.style.transform = "rotate(-180deg)";
         toggleIndex++;

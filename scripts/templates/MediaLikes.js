@@ -1,25 +1,27 @@
 class MediaLikes {
-  constructor(photographer, media, LikesSubject) {
-    this._photographer = photographer;
+  constructor(media) {
     this._media = media;
-    this.LikesSubject = LikesSubject;
-    // console.log(this);
+    this.allMedias = Array.from(
+      document.querySelectorAll(".card > .info > .likes_photo >.countLike")
+    );
+    this.likesArr = this.allMedias.map((likes) => Number(likes.innerHTML));
   }
 
   totalLikes() {
-    const totalLikes = this._media.reduce((acc, media) => acc + media.likes, 0);
+    console.log("totallikes", this.likesArr);
+    const totalLikes = this.likesArr.reduce((acc, likes) => acc + likes, 0);
+    console.log(totalLikes);
     return totalLikes;
   }
 
-  createBoxLikes() {
-    const $wrapper = document.createElement("div");
-    $wrapper.className = "block_likes_price";
-    const countLikesAndDisplayPrice = `
-      <span class="likes_count"> ${this.totalLikes()} ♥</span>
-      <span>${this._photographer.price} €/jour</span>
+  getLikes() {
+    this.$wrapperLikes = document.createElement("span");
+    this.$wrapperLikes.className = "likes_count";
+    const likes = `
+      <span class="likes_count"> ${this.totalLikes()} ♥</span>   
       `;
-    $wrapper.innerHTML = countLikesAndDisplayPrice;
-
-    return $wrapper;
+    this.$wrapperLikes.innerHTML = likes;
+    // console.log(this.totalLikes());
+    return this.$wrapperLikes;
   }
 }

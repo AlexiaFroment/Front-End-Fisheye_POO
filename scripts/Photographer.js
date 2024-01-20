@@ -12,9 +12,9 @@ class Photographer {
     this.MediasApi = new MediasApi("./data/photographers.json");
 
     // Likes Count/Subject
-    this.LikesSubject = new LikesSubject();
-    this.LikesCount = new LikesCount();
-    this.LikesSubject.like(this.LikesCount);
+    // this.LikesSubject = new LikesSubject();
+    // this.LikesCount = new LikesCount();
+    // this.LikesSubject.like(this.LikesCount);
 
     this.photographer = async () => {
       const photographersData = await this.PhotographersApi.getPhotographers();
@@ -65,24 +65,23 @@ class Photographer {
 
     mediasFiltered.forEach((media) => {
       const index = mediasFiltered.indexOf(media);
-      const templateArticle = new MediaCard(media, this.LikesSubject);
+      const templateArticle = new MediaCard(media);
       mediasContainer.appendChild(templateArticle.createMediaCard(index));
     });
   }
 
   async likesBlock() {
     const mediasFiltered = await this.medias();
-    // console.log(mediasFiltered);
-    this._blockLikesPrice = document.querySelector(".block_likes_price");
-    const templateLikes = new LikesCount(mediasFiltered);
-    this._blockLikesPrice.appendChild(templateLikes.getLikesCount());
+    const blockLikesPrice = document.querySelector(".block_likes_price");
+    const templateLikes = new MediaLikes(mediasFiltered);
+    blockLikesPrice.appendChild(templateLikes.getLikes());
   }
 
   async priceBlock() {
     const photographer = await this.photographer();
-    // console.log(photographer);
+    const blockLikesPrice = document.querySelector(".block_likes_price");
     const templatePrice = new PhotographerPrice(photographer);
-    this._blockLikesPrice.appendChild(templatePrice.getPrice());
+    blockLikesPrice.appendChild(templatePrice.getPrice());
   }
 
   async init() {

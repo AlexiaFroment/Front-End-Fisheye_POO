@@ -31,6 +31,7 @@ body {
   margin: 0;
 }
 
+/* HEADER */
 header {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -55,6 +56,8 @@ h1 {
   }
 }
 
+/* SECTION PHOTOGRAPH */
+
 .photographers_section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -62,11 +65,10 @@ h1 {
   margin: 100px 20px 100px 20px;
 }
 
-.photographers_section article {
-  justify-self: center;
+.photographers_section > article {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-items: center;
   flex-direction: column;
 }
 article a {
@@ -83,12 +85,7 @@ article a {
   color: var(--tertiary-color);
   font-size: var(--fs-36);
   text-align: center;
-  margin: 0;
-}
-
-.photographers_section .card_link h2:hover {
-  color: var(--first-color);
-  transform: scale(1.05);
+  margin: 10px 0 0 0;
 }
 
 .photographers_section .card_link img {
@@ -99,6 +96,14 @@ article a {
   object-fit: cover;
   box-shadow: 2px 2px 5px var(--grey);
 }
+
+.photographers_section .card_link:hover {
+  transform: scale(1.05);
+  h2 {
+    color: var(--first-color);
+  }
+}
+
 .photographers_section article h3 {
   color: var(--first-color);
   font-size: var(--fs-20);
@@ -110,6 +115,7 @@ article a {
   font-size: var(--fs-16);
   margin: 0;
   padding: 2px;
+  text-align: center;
 }
 .photographers_section article span {
   color: #757575;
@@ -117,14 +123,14 @@ article a {
   padding-top: 2px;
 }
 
-@media (max-width= 768px) {
+@media (max-width: 768px) {
   .photographers_section {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     margin: 80px 20px 80px 20px;
   }
 }
-@media (max-width= 320px) {
+@media (max-width: 320px) {
   .photographers_section {
     grid-template-columns: 1fr;
     gap: 40px;

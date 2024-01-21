@@ -1,3 +1,32 @@
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --white: white;
+  --black: black;
+  --grey: #312e2e;
+  --first-color: #901c1c;
+  --scd-color: #fafafa;
+  --tertiary-color: #db8876;
+
+  /* Font-size */
+  --fs-12: 0.75rem;
+  --fs-14: 0.875rem;
+  --fs-16: 1rem;
+  --fs-18: 1.125rem;
+  --fs-20: 1.25rem;
+  --fs-22: 1.375rem;
+  --fs-24: 1.5rem;
+  --fs-26: 1.625rem;
+  --fs-30: 1.875rem;
+  --fs-36: 2.25rem;
+  --fs-40: 2.5rem;
+  --fs-50: 3.125rem;
+  --fs-64: 4rem;
+}
 .modal_lightbox {
   /* visibility: hidden; */
   display: none;
@@ -74,10 +103,38 @@
 .lightbox_container > h3 {
   display: block;
   color: var(--first-color);
-
   border-radius: 0 0 5px 5px;
-  font-size: 24px;
+  font-size: var(--fs-36);
   margin: 0;
   padding: 7px 5px;
-  /* width: calc(100% - 10px); */
+}
+
+@media (max-width: 780px) {
+  .lightbox_next,
+  .lightbox_prev {
+    width: 20px;
+    height: 38px;
+  }
+  .lightbox_close {
+    width: 32px;
+    height: 32px;
+  }
+  .lightbox_container > h3 {
+    font-size: var(--fs-26);
+  }
+}
+@media (max-width: 450px) {
+  .lightbox_next,
+  .lightbox_prev {
+    width: 15px;
+    height: 33px;
+  }
+
+  .lightbox_close {
+    width: 27px;
+    height: 27px;
+  }
+  .lightbox_container > h3 {
+    font-size: var(--fs-22);
+  }
 }

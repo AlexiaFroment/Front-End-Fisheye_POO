@@ -91,7 +91,7 @@ class MediasFilter {
         toggleIndex++;
       } else {
         console.log("fermé");
-        this.$wrapper.style.height = "65px";
+        this.$wrapper.style.height = "55px";
         icon.style.transform = "rotate(0deg)";
         toggleIndex--;
       }

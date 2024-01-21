@@ -1,6 +1,3 @@
-/**
- * ❌ Add keyUp for close modal
- */
 class FormModal {
   constructor(photographer) {
     this._photographer = photographer;
@@ -16,6 +13,15 @@ class FormModal {
     };
 
     this.isAnimated = false;
+
+    this.onKeyUp = this.onKeyUp.bind(this);
+    document.addEventListener("keyup", this.onKeyUp);
+  }
+
+  onKeyUp(e) {
+    if (e.key === "Escape") {
+      this.closeModalForm(e);
+    }
   }
 
   // ✅ that's work

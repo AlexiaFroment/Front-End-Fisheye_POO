@@ -22,6 +22,7 @@
   --fs-22: 1.375rem;
   --fs-24: 1.5rem;
   --fs-26: 1.625rem;
+  --fs-30: 1.875rem;
   --fs-36: 2.25rem;
   --fs-40: 2.5rem;
 }
@@ -123,17 +124,57 @@ article a {
   padding-top: 2px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 780px) {
+  header {
+    height: 50px;
+  }
+
+  h1 {
+    font-size: var(--fs-26);
+    margin-right: 0;
+    justify-items: flex-start;
+    text-align: right;
+  }
+  .container_logo {
+    margin-left: 0;
+    .logo {
+      height: 40px;
+    }
+  }
   .photographers_section {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     margin: 80px 20px 80px 20px;
   }
+  .photographers_section .card_link h2 {
+    font-size: var(--fs-30);
+  }
+
+  .photographers_section .card_link img {
+    height: 180px;
+    width: 180px;
+  }
+  .photographers_section article p {
+    font-size: var(--fs-14);
+  }
 }
-@media (max-width: 320px) {
+@media (max-width: 450px) {
+  h1 {
+    font-size: var(--fs-18);
+  }
+  .container_logo {
+    margin-left: 10px;
+    .logo {
+      height: 30px;
+    }
+  }
   .photographers_section {
     grid-template-columns: 1fr;
     gap: 40px;
     margin: 70px 20px 70px 20px;
+  }
+  .photographers_section .card_link img {
+    height: 210px;
+    width: 210px;
   }
 }

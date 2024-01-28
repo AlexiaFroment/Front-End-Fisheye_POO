@@ -10,10 +10,7 @@ class LightboxModal {
     document.addEventListener("keyup", this.onKeyUp);
   }
 
-  // deleteDOM() {
-  //   this.$modalWrapperLightbox.innerHTML = "";
-  // }
-
+  // navigate with the keyboard
   onKeyUp(e) {
     if (e.key === "Escape") {
       this.close(e);
@@ -23,31 +20,31 @@ class LightboxModal {
       this.next(e);
     }
   }
-
+  // Navigate between the medias with left and right arrows
   next(e) {
     e.preventDefault();
     let i = this.findIndex;
-    // console.log("index en cours", i);
+
     if (i === this.galery.length - 1) {
       i = -1;
     }
     i++;
-    // console.log("index au clic next", i);
+
     this.createLightbox(i);
   }
   prev(e) {
     e.preventDefault();
-    // console.log("index en cours", this.findIndex);
+
     let i = this.findIndex;
     if (i === 0) {
       i = this.galery.length;
-      // console.log(this.galery.length);
     }
     i--;
-    // console.log("index au clic sur prev", i);
+
     this.createLightbox(i);
   }
 
+  // closeModal to click
   close(e) {
     e.preventDefault();
     this.$modalWrapperLightbox.classList.remove("active");
@@ -61,14 +58,10 @@ class LightboxModal {
   createLightbox(index) {
     this.allMedias = Array.from(document.querySelectorAll(`.media`));
     this.galery = this.allMedias.filter((media) => media.id);
-    console.log("galery", this.galery);
+
     this.card = this.galery[index];
     this.findIndex = this.galery.findIndex((el) => el === this.card);
     this.typeMedia = this.card.tagName;
-    console.log(this.typeMedia);
-    console.log(index);
-    console.log("card ", this.card);
-    console.log("media ", this._media);
 
     const img = `
     <div class="lightbox_container">
@@ -90,6 +83,7 @@ class LightboxModal {
     <button class="lightbox_prev controls" aria-label="lightbox_prev"></button>
     `;
 
+    // method to display img OR video when I navigate in the lightbox
     const mediaInLightbox = () => {
       if (this.typeMedia === "IMG") {
         return img;
@@ -110,6 +104,9 @@ class LightboxModal {
 
     this.$modalWrapperLightbox.appendChild(this.$wrapper);
 
+    /**
+     * Eventlistener on click to close, and navigate between the different medias
+     */
     this.$wrapper
       .querySelector(".lightbox_close")
       .addEventListener("click", this.close.bind(this));

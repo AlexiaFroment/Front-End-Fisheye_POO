@@ -18,13 +18,15 @@ class FormModal {
     document.addEventListener("keyup", this.onKeyUp);
   }
 
+  // close modal with keyboard
   onKeyUp(e) {
     if (e.key === "Escape") {
       this.closeModalForm(e);
     }
   }
-
-  // ✅ that's work
+  /**
+   * verification of each input individually
+   */
   messageValidation() {
     if (this.$messageInput.value.length >= 5) {
       this.showValidation({ index: 3, validation: true });
@@ -35,7 +37,7 @@ class FormModal {
     }
   }
 
-  // ✅ that's work
+  // validation of the email adress with implementation of a regex
   mailValidation() {
     const regexEmail = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
     if (regexEmail.test(email.value)) {
@@ -47,7 +49,6 @@ class FormModal {
     }
   }
 
-  // ✅ that's work
   lastNameValidation() {
     if (lastName.value.length >= 3) {
       this.showValidation({ index: 1, validation: true });
@@ -58,7 +59,6 @@ class FormModal {
     }
   }
 
-  // ✅ that's work
   firstNameValidation() {
     if (firstName.value.length >= 3) {
       this.showValidation({ index: 0, validation: true });
@@ -69,7 +69,7 @@ class FormModal {
     }
   }
 
-  // ✅ that's work
+  // display validation icon and error message on each input
   showValidation({ index, validation }) {
     if (validation) {
       this.$validationIcons[index].style.display = "inline";
@@ -82,9 +82,10 @@ class FormModal {
     }
   }
 
+  // checks that all inputs are completed before sending
   validateForm(e) {
     e.preventDefault();
-    console.log(this.$btnSubmit);
+
     const keys = Object.keys(this._inputsValidity);
     const failedInputs = keys.filter((key) => !this._inputsValidity[key]);
 
@@ -109,7 +110,7 @@ class FormModal {
     }
   }
 
-  // ✅ that's work
+  // close modal at the click
   closeModalForm() {
     // e.preventDefault();
     this.$modalWrapper.classList.remove("active");
@@ -119,7 +120,6 @@ class FormModal {
     this.$modalWrapper.ariaHidden = "true";
   }
 
-  // ✅ Create form, ok that's work
   createForm() {
     this.$wrapper = document.createElement("div");
     this.$wrapper.className = "modal";

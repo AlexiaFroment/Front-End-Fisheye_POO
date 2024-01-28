@@ -3,6 +3,7 @@ class MediaCard {
     this._media = media;
   }
 
+  // update counter of total likes
   updateBoxLikes() {
     this.$boxLikes = document.querySelector(".likes_count");
     this.$boxLikes.innerHTML = "";
@@ -10,6 +11,7 @@ class MediaCard {
     this.$boxLikes.appendChild(templateLikes.getLikes());
   }
 
+  // update like and dislike on each media
   countLikeBox() {
     const that = this;
     this.$likesPhoto = this.$wrapper.querySelector(".likes_photo");

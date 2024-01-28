@@ -7,10 +7,10 @@ class MediaLikes {
     this.likesArr = this.allMedias.map((likes) => Number(likes.innerHTML));
   }
 
+  // method reduce => calculate the total number of likes in the gallery
   totalLikes() {
-    console.log("totallikes", this.likesArr);
     const totalLikes = this.likesArr.reduce((acc, likes) => acc + likes, 0);
-    console.log(totalLikes);
+
     return totalLikes;
   }
 
@@ -21,7 +21,7 @@ class MediaLikes {
       <span class="likes_count"> ${this.totalLikes()} ♥</span>   
       `;
     this.$wrapperLikes.innerHTML = likes;
-    // console.log(this.totalLikes());
+
     return this.$wrapperLikes;
   }
 }

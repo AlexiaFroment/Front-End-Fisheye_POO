@@ -1,9 +1,9 @@
 class PhotographerAbout {
   constructor(photographer) {
     this._photographer = photographer;
-    // console.log(this);
   }
 
+  // open form modal
   openForm(e) {
     e.preventDefault();
     const form = new FormModal(this._photographer);
@@ -29,6 +29,9 @@ class PhotographerAbout {
 
     $wrapper.innerHTML = PhotographerAbout;
 
+    /**
+     * Eventlistener on click to open form modal
+     */
     $wrapper
       .querySelector(".contact_btn")
       .addEventListener("click", this.openForm.bind(this));

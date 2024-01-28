@@ -3,6 +3,7 @@
  */
 let id = new URLSearchParams(document.location.search).get("id");
 
+// create photographer page
 class Photographer {
   constructor() {
     this.$Main = document.querySelector("#main");
@@ -11,11 +12,7 @@ class Photographer {
     this.PhotographersApi = new PhotographersApi("./data/photographers.json");
     this.MediasApi = new MediasApi("./data/photographers.json");
 
-    // Likes Count/Subject
-    // this.LikesSubject = new LikesSubject();
-    // this.LikesCount = new LikesCount();
-    // this.LikesSubject.like(this.LikesCount);
-
+    // Call photographer API to display datas on photographer page
     this.photographer = async () => {
       const photographersData = await this.PhotographersApi.getPhotographers();
 
@@ -30,6 +27,7 @@ class Photographer {
       return photographer;
     };
 
+    // Call media API to display datas on photographer page
     this.medias = async () => {
       const mediasData = await this.MediasApi.getMedias();
 
@@ -45,6 +43,7 @@ class Photographer {
     };
   }
 
+  // create photographer section
   async aboutPhotographer() {
     const photographer = await this.photographer();
     const aboutPhotographer = document.querySelector(".photographer");
@@ -52,6 +51,7 @@ class Photographer {
     aboutPhotographer.appendChild(templateAbout.createPhotographerAbout());
   }
 
+  // create dropdow filter
   async filterMedias() {
     const mediasFiltered = await this.medias();
     const filterMedias = document.querySelector(".filter");
@@ -59,6 +59,7 @@ class Photographer {
     filterMedias.appendChild(templateFilter.createFilterMedia());
   }
 
+  // create a medias gallery per photographer
   async galleryMedias() {
     const mediasFiltered = await this.medias();
     const mediasContainer = document.querySelector(".medias_container");
@@ -70,13 +71,14 @@ class Photographer {
     });
   }
 
+  // create a likes counter
   async likesBlock() {
     const mediasFiltered = await this.medias();
     const blockLikesPrice = document.querySelector(".block_likes_price");
     const templateLikes = new MediaLikes(mediasFiltered);
     blockLikesPrice.appendChild(templateLikes.getLikes());
   }
-
+  // display the photographer's rate
   async priceBlock() {
     const photographer = await this.photographer();
     const blockLikesPrice = document.querySelector(".block_likes_price");

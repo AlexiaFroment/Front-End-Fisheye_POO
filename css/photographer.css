@@ -52,24 +52,24 @@ header img.logo {
 }
 .photograph_infos {
   order: 1;
-  h2 {
-    font-size: var(--fs-64);
-    color: var(--tertiary-color);
-    margin: 0;
-    text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-  h3 {
-    font-size: var(--fs-36);
-    font-weight: 900;
-    color: var(--first-color);
-    text-shadow: 3px 1px 4px rgba(0, 0, 0, 0.25);
-    margin: 20px 0;
-  }
-  p {
-    font-size: var(--fs-30);
-    color: #525252;
-    margin: 0;
-  }
+}
+.photograph_infos h2 {
+  font-size: var(--fs-64);
+  color: var(--tertiary-color);
+  margin: 0;
+  text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.photograph_infos h3 {
+  font-size: var(--fs-36);
+  font-weight: 900;
+  color: var(--first-color);
+  text-shadow: 3px 1px 4px rgba(0, 0, 0, 0.25);
+  margin: 20px 0;
+}
+.photograph_infos p {
+  font-size: var(--fs-30);
+  color: #525252;
+  margin: 0;
 }
 
 .photograph_contact {
@@ -153,25 +153,32 @@ span.filter_by {
   border-radius: 5px;
   color: var(--white);
   font-size: var(--fs-20);
-  font-weight: bold;
+  font-weight: 500;
   font-family: open;
   cursor: pointer;
+}
+.bloc_top:hover{
+  font-weight: bolder;
+  font-size: var(--fs-22);
 }
 button.bloc_top span {
   padding: 10px;
 }
 button.bloc_top .icon {
 }
+
 .bloc_filter {
   display: flex;
   flex-direction: column;
 }
-#date {
+#date,#title {
   cursor: pointer;
 }
-#title {
-  cursor: pointer;
+#date:hover, #title:hover{
+  font-weight: bolder;
+  font-size: var(--fs-22);
 }
+
 hr.separator {
   width: 90%;
   background: white;
@@ -180,7 +187,7 @@ hr.separator {
 .bloc_filter span {
   padding: 15px 20px;
   font-size: var(--fs-20);
-  font-weight: bold;
+  font-weight: 500;
 }
 .bloc_filter span:last-child {
   padding-bottom: 25px;

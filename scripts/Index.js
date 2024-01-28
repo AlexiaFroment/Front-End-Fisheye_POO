@@ -3,6 +3,7 @@ class Index {
     this.$photographersSection = document.querySelector(
       ".photographers_section"
     );
+    // Call photographer API to create the home page
     this.photographersApi = new PhotographersApi("./data/photographers.json");
   }
   async main() {

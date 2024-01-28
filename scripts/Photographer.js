@@ -3,7 +3,7 @@
  */
 let id = new URLSearchParams(document.location.search).get("id");
 
-// create photographer page
+// Photographer page
 class Photographer {
   constructor() {
     this.$Main = document.querySelector("#main");

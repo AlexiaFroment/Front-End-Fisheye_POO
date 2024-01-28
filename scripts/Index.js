@@ -1,3 +1,4 @@
+// Home page
 class Index {
   constructor() {
     this.$photographersSection = document.querySelector(

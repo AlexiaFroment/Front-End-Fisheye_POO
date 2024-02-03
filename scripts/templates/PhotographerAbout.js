@@ -15,7 +15,7 @@ class PhotographerAbout {
     $wrapper.className = "about_photographer";
     const PhotographerAbout = `
     <div class="photograph_contact">
-      <button class="contact_btn modal-trigger">Contactez-moi</button>
+      <button class="contact_btn modal-trigger" aria-label="contact">Contactez-moi</button>
     </div>
     <div class="photograph_infos">
       <h2>${this._photographer.name}</h2>

@@ -38,21 +38,21 @@ class MediaCard {
     this.$wrapper.className = "card";
 
     const img = `
-    <div class="media">
-    <img class="media_img media" src="assets/medias/${this._media.image}" alt="${this._media.title}" id="${this._media.id}" />
-    </div>`;
+    <a href="#" class="media" aria-label="${this._media.title}">
+      <img class="media_img media" src="assets/medias/${this._media.image}" alt="${this._media.title}" id="${this._media.id}"/>
+    </a>`;
 
     const video = `
-    <div class="media">
+    <a href="#" class="media" aria-label="${this._media.title}">
     <video class="media_mp4 media" src="assets/medias/${this._media.video}" alt="${this._media.title}" id="${this._media.id}"></video>
-    </div>`;
+    </a>`;
 
     const mediaCard = `
     <div class="info">
     <span class="title_photo">${this._media.title}</span>
-    <span class="likes_photo">
+    <span class="likes_photo">      
     <span class="countLike">${this._media.likes}</span>
-    <span class="like">♥</span>
+    <span class="like">♥</span>      
     </span>
     </div>
     `;

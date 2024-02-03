@@ -84,8 +84,8 @@ class MediasFilter {
     this.$wrapper = document.createElement("div");
     this.$wrapper.className = "dropdown";
 
-    const filterMedias = `
-              <button class="bloc_top">
+    const filterMedias = `  
+              <button class="bloc_top" aria-label="filter">
                 <span id="famous">Popularité</span>
                 <span id="icon"><i class="fa-solid fa-chevron-down"></i></span>
               </button>

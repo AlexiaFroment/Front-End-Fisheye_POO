@@ -170,7 +170,7 @@ class FormModal {
           <textarea name="message" id="message"></textarea>
           <img src="../assets/icons/check.svg" alt="icone de validation" class="check-icon">
         </div>
-        <span class="error-msg">Votre message doit contenir au moins 10 caractères</span>
+        <span class="error-msg">Votre message doit contenir au moins 5 caractères</span>
       </div>
 
       <button type="submit" class="submit_button">Envoyer</button>

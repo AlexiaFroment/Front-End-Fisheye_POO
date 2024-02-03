@@ -141,18 +141,10 @@ form div {
   transition: opacity 0.4s 0.2s ease-out, transform 0.4s 0.2s ease-out;
   z-index: 5;
 }
-/* .contact_button:hover,
+.contact_button:hover,
 .submit_button:hover {
   background: #791818;
 }
 .submit_button.shake {
   animation: shake 0.4s;
 }
-@keyframes shake {
-  33% {
-    transform: translateX(-5px);
-  }
-  66% {
-    transform: translateX(+5px);
-  }
-} */

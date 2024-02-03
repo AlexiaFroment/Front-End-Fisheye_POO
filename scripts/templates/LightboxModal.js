@@ -60,6 +60,7 @@ class LightboxModal {
     this.galery = this.allMedias.filter((media) => media.id);
 
     this.card = this.galery[index];
+
     this.findIndex = this.galery.findIndex((el) => el === this.card);
     this.typeMedia = this.card.tagName;
 
